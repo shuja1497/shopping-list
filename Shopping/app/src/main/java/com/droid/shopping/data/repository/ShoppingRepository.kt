@@ -1,0 +1,14 @@
+package com.droid.shopping.data.repository
+
+import com.droid.shopping.data.local.ShoppingItem
+import kotlinx.coroutines.flow.Flow
+
+interface ShoppingRepository {
+    fun getAllItems(): Flow<List<ShoppingItem>>
+
+    suspend fun addItem(item: ShoppingItem)
+
+    suspend fun updateItem(item: ShoppingItem)
+
+    suspend fun deleteItem(item: ShoppingItem)
+}
