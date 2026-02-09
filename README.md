@@ -4,7 +4,7 @@ A grocery list application built with Kotlin and Jetpack Compose that allows use
 
 ## Demo
 
-https://github.com/shuja1497/shopping-list/raw/main/Shopping/shopping-list-demo.mp4
+https://github.com/user-attachments/assets/c5dfc626-4610-4785-85f0-a38ddcb21029
 
 ## Features
 
