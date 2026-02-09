@@ -11,11 +11,11 @@ hilt {
 }
 
 android {
-    namespace = "com.example.machinecoding"
+    namespace = "com.droid.shopping"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.machinecoding"
+        applicationId = "com.droid.shopping"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -40,6 +40,11 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 }
 
