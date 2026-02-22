@@ -79,11 +79,14 @@
 -dontwarn okio.**
 
 # ----------------------------------------------------------
-# 7. Compose
+# 7. Compose + Lifecycle
 # ----------------------------------------------------------
-# Keep Compose @Immutable and @Stable annotated classes
--keep @androidx.compose.runtime.Immutable class * { *; }
--keep @androidx.compose.runtime.Stable class * { *; }
+# Prevent R8 from merging/rewriting Compose UI interface hierarchy.
+# R8 vertical class merging causes IncompatibleClassChangeError on
+# ModifierLocalProvider.all() at runtime (API 36+).
+-keep,allowobfuscation,allowshrinking interface androidx.compose.ui.** { *; }
+-keep,allowobfuscation,allowshrinking class androidx.compose.ui.** { *; }
+
 
 # ----------------------------------------------------------
 # 8. Timber
@@ -95,6 +98,14 @@
 # ----------------------------------------------------------
 -keep class net.sqlcipher.** { *; }
 -dontwarn net.sqlcipher.**
+
+# ----------------------------------------------------------
+# 9b. Google Tink / Security-Crypto (Error Prone annotations)
+# ----------------------------------------------------------
+-dontwarn com.google.errorprone.annotations.CanIgnoreReturnValue
+-dontwarn com.google.errorprone.annotations.CheckReturnValue
+-dontwarn com.google.errorprone.annotations.Immutable
+-dontwarn com.google.errorprone.annotations.RestrictedApi
 
 # ----------------------------------------------------------
 # 10. General Android
