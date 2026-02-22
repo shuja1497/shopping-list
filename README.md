@@ -45,13 +45,20 @@ https://github.com/user-attachments/assets/c5dfc626-4610-4785-85f0-a38ddcb21029
 5. Click **Run** or press `Shift+F10`
 
 #### Generate APK manually
+
+**Debug** (no signing setup needed):
+```bash
+cd Shopping
+./gradlew assembleDebug
+```
+The APK will be at `app/build/outputs/apk/debug/app-debug.apk`.
+
+**Release** (requires signing keystore — see `keystore.properties.template`):
 ```bash
 cd Shopping
 ./gradlew assembleRelease
 ```
 The APK will be at `app/build/outputs/apk/release/app-release.apk`.
-
-> **Note:** Release builds require a signing keystore. See `keystore.properties.template` for setup.
 
 ## Architecture
 
