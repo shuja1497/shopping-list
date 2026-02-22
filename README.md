@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/c5dfc626-4610-4785-85f0-a38ddcb21029
 
 ### APK (quickest way)
 
-1. Download [`app-debug.apk`](Shopping/app-debug.apk) from this repository
+1. Download the latest `app-release.apk` from the [Releases page](https://github.com/shuja1497/shopping-list/releases/latest)
 2. Transfer it to your Android device
 3. On your device, enable **Settings > Security > Install from Unknown Sources** (if not already enabled)
 4. Open the APK file and tap **Install**
@@ -47,9 +47,11 @@ https://github.com/user-attachments/assets/c5dfc626-4610-4785-85f0-a38ddcb21029
 #### Generate APK manually
 ```bash
 cd Shopping
-./gradlew assembleDebug
+./gradlew assembleRelease
 ```
-The APK will be at `app/build/outputs/apk/debug/app-debug.apk`.
+The APK will be at `app/build/outputs/apk/release/app-release.apk`.
+
+> **Note:** Release builds require a signing keystore. See `keystore.properties.template` for setup.
 
 ## Architecture
 
