@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,8 +8,28 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
+// Load keystore properties from file (not committed to git)
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.exists()) {
+        keystorePropertiesFile.inputStream().use { load(it) }
+    }
+}
+
+// Load version properties (committed to git — no secrets)
+val versionPropertiesFile = rootProject.file("version.properties")
+val versionProperties = Properties().apply {
+    versionPropertiesFile.inputStream().use { load(it) }
+}
+val appVersionCode = (versionProperties["versionCode"] as String).toInt()
+val appVersionName = "${versionProperties["versionMajor"]}.${versionProperties["versionMinor"]}.${versionProperties["versionPatch"]}"
+
 hilt {
     enableAggregatingTask = true
+}
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
 }
 
 android {
@@ -18,18 +40,37 @@ android {
         applicationId = "com.droid.shopping"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = appVersionCode
+        versionName = appVersionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            if (keystorePropertiesFile.exists()) {
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 
@@ -46,6 +87,11 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = true
     }
+}
+
+composeCompiler {
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    metricsDestination = layout.buildDirectory.dir("compose_compiler")
 }
 
 kotlin {
@@ -89,6 +135,12 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+    // --- SQLCipher (encrypted Room database) ---
+    implementation(libs.sqlcipher)
+
+    // --- Security (encrypted prefs for DB passphrase storage) ---
+    implementation(libs.androidx.security.crypto)
 
     // --- Coil image loading ---
     implementation(libs.coil.compose)

@@ -9,13 +9,17 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Shopping">
+        android:theme="@style/Theme.Shopping"
+        android:usesCleartextTraffic="false">
         <activity
             android:name="com.droid.shopping.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
             android:theme="@style/Theme.Shopping">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Network security configuration.
+    Block all cleartext (HTTP) traffic. Only HTTPS is allowed.
+    See https://developer.android.com/training/articles/security-config
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+</network-security-config>

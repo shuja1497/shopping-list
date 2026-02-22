@@ -7,7 +7,7 @@ import androidx.room.TypeConverters
 @Database(
     entities = [ShoppingItem::class],
     version = 1,
-    exportSchema = false,
+    exportSchema = true,
 )
 @TypeConverters(CategoryConverter::class)
 abstract class ShoppingDatabase : RoomDatabase() {

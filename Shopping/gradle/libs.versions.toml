@@ -17,6 +17,8 @@ room = "2.6.1"
 datastore = "1.1.1"
 coil = "2.5.0"
 timber = "5.0.1"
+sqlcipher = "4.5.4"
+securityCrypto = "1.1.0-alpha06"
 mockk = "1.13.10"
 truth = "1.4.2"
 junit = "4.13.2"
@@ -73,6 +75,12 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 
 # Timber
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
+# SQLCipher (encrypted Room database)
+sqlcipher = { group = "net.zetetic", name = "android-database-sqlcipher", version.ref = "sqlcipher" }
+
+# Security - encrypted shared preferences for key storage
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
 
 # Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }

@@ -13,3 +13,13 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# APK/AAB build artifacts
+*.apk
+*.aab
+
+# Signing - NEVER commit keystores or signing credentials
+*.jks
+*.keystore
+keystore.properties
+signing.properties
