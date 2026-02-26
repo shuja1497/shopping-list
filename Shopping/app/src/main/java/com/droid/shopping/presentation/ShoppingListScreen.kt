@@ -53,7 +53,7 @@ fun ShoppingListScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun ShoppingListContent(
+internal fun ShoppingListContent(
     state: ShoppingListUiState,
     onEvent: (ShoppingListUiEvent) -> Unit,
     modifier: Modifier = Modifier,

@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -54,6 +55,10 @@ fun ShoppingItemCard(
             Checkbox(
                 checked = item.isPurchased,
                 onCheckedChange = { onTogglePurchased() },
+                colors = CheckboxDefaults.colors(
+                    checkedColor = MaterialTheme.colorScheme.tertiary,
+                    checkmarkColor = MaterialTheme.colorScheme.onTertiary,
+                ),
             )
 
             Column(
@@ -80,7 +85,7 @@ fun ShoppingItemCard(
                 Icon(
                     imageVector = Icons.Default.Edit,
                     contentDescription = "Edit",
-                    tint = MaterialTheme.colorScheme.primary,
+                    tint = MaterialTheme.colorScheme.tertiary,
                 )
             }
 
