@@ -33,11 +33,11 @@ ksp {
 }
 
 android {
-    namespace = "com.droid.shopping"
+    namespace = "dev.zenolabs.groceryshopping"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.droid.shopping"
+        applicationId = "dev.zenolabs.groceryshopping"
         minSdk = 24
         targetSdk = 36
         versionCode = appVersionCode

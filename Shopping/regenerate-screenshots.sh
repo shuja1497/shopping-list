@@ -14,9 +14,9 @@ set -euo pipefail
 ADB="${ANDROID_HOME:-$HOME/Library/Android/sdk}/platform-tools/adb"
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SCREENSHOT_DIR="$PROJECT_ROOT/store-listing/screenshots"
-PKG="com.droid.shopping.debug"
+PKG="dev.zenolabs.groceryshopping.debug"
 TEST_RUNNER="$PKG.test/androidx.test.runner.AndroidJUnitRunner"
-TEST_CLASS="com.droid.shopping.ScreenshotCapture"
+TEST_CLASS="dev.zenolabs.groceryshopping.ScreenshotCapture"
 SCREENSHOTS=(01_main_list 02_add_item 03_filter_category 04_sort_alphabetical 05_empty_state)
 
 echo "==> Building debug + test APKs..."

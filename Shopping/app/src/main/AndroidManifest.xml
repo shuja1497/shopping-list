@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name="com.droid.shopping.ShoppingApp"
+        android:name="dev.zenolabs.groceryshopping.ShoppingApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Shopping"
         android:usesCleartextTraffic="false">
         <activity
-            android:name="com.droid.shopping.MainActivity"
+            android:name="dev.zenolabs.groceryshopping.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTop"

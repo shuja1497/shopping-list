@@ -12,9 +12,9 @@
 # 2. Room Database
 # ----------------------------------------------------------
 # Keep Room entities (fields are mapped to DB columns)
--keep class com.droid.shopping.data.local.ShoppingItem { *; }
--keep class com.droid.shopping.data.local.Category { *; }
--keep class com.droid.shopping.data.local.CategoryConverter { *; }
+-keep class dev.zenolabs.groceryshopping.data.local.ShoppingItem { *; }
+-keep class dev.zenolabs.groceryshopping.data.local.Category { *; }
+-keep class dev.zenolabs.groceryshopping.data.local.CategoryConverter { *; }
 
 # Keep all classes annotated with Room annotations
 -keep @androidx.room.Entity class * { *; }
